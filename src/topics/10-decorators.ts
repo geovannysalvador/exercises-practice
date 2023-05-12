@@ -1,7 +1,13 @@
 
 // los decoradores es una simple funcion 
 
-function classDecorator(){
+function classDecorator<T extends {new (...arg:any[]): { }}>(
+    constructor: T
+){
+    return class extends constructor{
+        newProperty = 'New Property';
+        hello = 'override';
+    }
 
 }
 
@@ -10,7 +16,7 @@ function classDecorator(){
 
 //clase comun y corriente
 
-class SuperClass {
+ export class SuperClass {
 
     public myProperty: String = 'Abc123';
 
